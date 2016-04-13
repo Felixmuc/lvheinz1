@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Aspekte der Naturgefahrenforschung</title>
+
+<link rel="stylesheet" type="text/css" href="css/Main.css" />
+<title>first leaflet map</title>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<style>h2{color: green}</style>
+</head>
+<body>
+			<h1 style="color:blue">Naturgefahren</h1>
+			<p>In der Vertiefung werden die Naturgefahren Lawine, Mure, Steinschlag und Hydrologie von verschiedenen Arbeitsgruppen behandelt. Das Arbeitsgebiet befindet sich im Norden Islands nahe der Ortschaft Olofsfjordur.</p>
+			<img src="http://www.biberberti.com/DE/images/LAWINE-Abgang2.jpg"
+	
+	style="height:300px;border:4px solid red"
+/>
+<img src="https://www.bmlfuw.gv.at/.imaging/stk/bmlfuw/contentImageInline/dam/bmlfuw/forst/schutz-naturgefahren/wildbach-lawinen/naturgefahren/wildbaeche/Mure/69846-400x400/jcr:content/69846-400x400.jpg.2011-09-15-14-41-33.jpg"
+	
+	style="height:300px;border:4px solid red"
+/>
+<img src="http://www.meteoradar.ch/forum/forum_uploads/incoming/20121113_004912_Dr_Funnel.JPG"
+	
+	style="height:300px;border:4px solid red"
+/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Mud_(Fluss).JPG"
+	
+	style="height:300px;border:4px solid red"
+/>
+			<h2>Arbeitsgruppe Mure</h2>
+			<p>Die Ergebnisse der Arbeitsgruppe Mure werden im Folgenden vorgestellt.</p>
+			
+			<h4>Auswertungstabelle</h4>
+			<p>Blau unterlegt sind die Ergebnisse, die für das Untersuchungsgebiet kalibriert wurden.</p>
+			<p> Mü und Xi sind diejenigen Parameter, die entscheidend sind, wie eine Mure sich ausbreitet.
+			<table border>
+	<tr>
+		<th>Mü</th>
+		<th>Xi</th>
+		<th>Druck</th>
+		<th>Reichweite</th>
+	</tr>
+	<tr>
+		<td style='background-color:rgb(198,219,239)'>0.1</td>
+		<td style='background-color:rgb(198,219,239)'>100</td>
+		<td style='background-color:rgb(198,219,239)'>zu simulieren</td>
+		<td style='background-color:rgb(198,219,239)'>zu simulieren</td>
+	</tr>
+	<tr>
+		<td>0.2</td>
+		<td>200</td>
+		<td colspan="2">zu simulieren</td>
+	</tr>
+	<tr>
+		<td>0.3</td>
+		<td colspan="3">300</td>
+	</tr>
+</table>
+			
+
+
+		<h2>Nützliche Links</h2>
+		<nav>
+			<ul><a href="http://625.listhus.com/index.html">Nützliche Informationen zu Olafsfjordur</a></ul>
+			<ul><a href="https://www.bmlfuw.gv.at/forst/schutz-naturgefahren/naturgefahren/wildbaeche/Mure.html">Grundlagen von Murgängen</a></ul>
+			<ul><a href="http://www.sciencedirect.com/science/article/pii/S0278434315300777">SEDEX - Aufnahmeverfahren im Gelände</a></ul>	
+	
+		</nav>
+		<h2>Karte des Untersuchungsgebiets</h2>
+		
+		
+
+    <div id="mapIS" style="width:900px;height:600px"></div>
+    <script>
+        var map = L.map('mapIS', {
+            center : [66.0719237, -18.65599],
+            zoom : 11
+        });
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+        }).addTo(map);
+		
+		         var marker = L.marker([66.0719237, -18.65599]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hauptort</p><img style="width:300px;" src="http://212.30.251.155:8086/cgi-bin/viewer/video.jpg?resolution=800x450&0.6916199778691647" />')
+		var marker = L.marker([66.079758, -18.684358]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hotspot Gruppe 1</p><img style="width:300px;"  />')
+		var marker = L.marker([66.034236, -18.756407]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hotspot Gruppe 2</p><img style="width:300px;"  />')
+		var marker = L.marker([66.021751, -18.716757]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hotspot Gruppe 3</p><img style="width:300px;"  />')
+		var marker = L.marker([66.064700, -18.624446]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hotspot Gruppe 4</p><img style="width:300px;"  />')
+		var marker = L.marker([65.925405, -18.571802]).addTo(map);
+        marker.bindPopup('<h2>Olafsfjordur</h2><p>Hostel</p><img style="width:300px;"  />')
+		
+		var Linie = L.polyline ([
+   [65.925405, -18.571802],
+   [66.0719237, -18.65599],
+   [66.079758, -18.684358],
+   [66.034236, -18.756407],
+   [66.021751, -18.716757],
+   [66.064700, -18.624446]
+   
+   ], {color: 'red',weight: '10'}).addTo(map);
+   map.fitBounds(Linie.getBounds());
+		
+       L.control.scale({
+            'metric' : false
+        }).addTo(map); 
+   </script>
+   
+   
+   <h4> Basemap Tirol</h4>
+   <div id="mapAT" style="width:900px;height:600px"></div>
+	<script>
+        
+        
+			   var layers = { // http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
+            geolandbasemap : L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapoverlay : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapgrau : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaphidpi : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaporthofoto30cm : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            })
+        };
+        var map = L.map('mapAT', {
+            layers : [layers.bmaporthofoto30cm],
+            center : [47.264269, 11.385312],
+            zoom : 12
+        });
+        L.control.layers({
+            "Geoland Basemap" : layers.geolandbasemap,
+            "Geoland Basemap Overlay" : layers.bmapoverlay,
+            "Geoland Basemap Grau": layers.bmapgrau,
+            "Geoland Basemap High DPI" : layers.bmaphidpi,
+            "Geoland Basemap Orthofoto" : layers.bmaporthofoto30cm
+        }).addTo(map)
+        L.control.scale({
+            'imperial' : false
+        }).addTo(map);
+		 var marker = L.marker([47.262611, 11.380556]).addTo(map);
+        marker.bindPopup('<h2>Inn</h2><img style="width:300px;" src="http://www.stefanjud.net/webcam/sistrans-nord/2016/04/06/1400_la.jpg" />')
+		var marker = L.marker([47.2686247, 11.2530464]).addTo(map);
+        marker.bindPopup('<h2>Martinswand</h2><img style="width:300px;" src="http://www.stefanjud.net/webcam/sistrans-nord/2016/04/06/1400_la.jpg" />')
+		var marker = L.marker([47.2565498, 11.3913172]).addTo(map);
+        marker.bindPopup('<h2>Daheim</h2><img style="width:300px;" src="http://www.stefanjud.net/webcam/sistrans-nord/2016/04/06/1400_la.jpg" />')
+		var marker = L.marker([47.2686632, 11.3910891]).addTo(map);
+        marker.bindPopup('<h2>Goldenes Dachl</h2><img style="width:300px;" src="http://www.stefanjud.net/webcam/sistrans-nord/2016/04/06/1400_la.jpg" />')
+		var marker = L.marker([47.3128287, 11.3840742]).addTo(map);
+        marker.bindPopup('<h2>Hafelekar</h2><img style="width:300px;" src="http://www.stefanjud.net/webcam/sistrans-nord/2016/04/06/1400_la.jpg" />')
+    
+   var Linie = L.polyline ([
+   [47.2686247, 11.2530464],
+   [47.262611, 11.380556],
+   [47.2686632, 11.3910891],
+   [47.3128287, 11.3840742],
+   [47.2565498, 11.3913172]
+   
+   ], {color: 'red',weight: '10'}).addTo(map);
+   map.fitBounds(Linie.getBounds());
+   </script>
+   <!-- Für Firefox: falls Fehler, F12 drücken -->
+		
+</body>
+</html>
